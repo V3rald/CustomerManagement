@@ -1,0 +1,13 @@
+<app-home></app-home>
+
+<div *ngFor="let payment of payments; let i = index">
+    <mat-card style="margin-bottom: 10px; width: inherit">
+        <mat-card-title>
+            Plan: {{agreements[i].name}}
+        </mat-card-title>
+        <mat-card-description>
+            Valid until: {{agreements[i].validFor}}<br>
+            Payment: {{payments[i].name}}
+        </mat-card-description>
+    </mat-card>
+</div>

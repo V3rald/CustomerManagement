@@ -1,0 +1,18 @@
+<form [formGroup]="form" *ngIf="characteristic">
+    <h3>Update characteristic</h3>
+    <mat-form-field>
+        <mat-label>Name</mat-label>
+        <mat-select formControlName="name" [(ngModel)]="selectedCharacteristic">
+          <mat-option value="Income">Income</mat-option>
+          <mat-option value="Number of phones">Number of phones</mat-option>
+        </mat-select>
+      </mat-form-field>
+    <mat-form-field>
+        <mat-label>Value</mat-label>
+        <input matInput formControlName="value" [(ngModel)]="characteristic.value" required>
+    </mat-form-field>
+    <div style="display: flex; justify-content: flex-end;">
+        <button mat-raised-button (click)="dialogRef.close()" class="margin-right">Close</button>
+        <button mat-raised-button [mat-dialog-close]="form.value" [disabled]="form.invalid">Add</button>
+    </div>
+</form>

@@ -1,0 +1,27 @@
+<app-home></app-home>
+
+<button mat-fab class="action-btn" (click)="openDialog()">
+    <mat-icon>add</mat-icon>
+</button>
+
+<div *ngFor="let characteristic of characteristics; let i = index">
+    <mat-card style="margin-bottom: 10px; width: inherit">
+        <mat-card-title>
+            Name: {{characteristic.name}}
+        </mat-card-title>
+
+        <mat-card-content>
+            <div>
+                Value: {{characteristic.value}}
+            </div>
+        </mat-card-content>
+        <mat-card-footer>
+            <button mat-button (click)="openDialogUpdate(i)">
+                <mat-icon>create icon</mat-icon>
+            </button>
+            <button mat-button (click)="remove(i)">
+                <mat-icon>delete outline</mat-icon>
+            </button>
+        </mat-card-footer>
+    </mat-card>
+</div>

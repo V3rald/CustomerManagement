@@ -1,0 +1,27 @@
+<app-home></app-home>
+
+<mat-card>
+    <div *ngIf="errorMessage" style="color:red">
+        {{errorMessage}}
+    </div>
+    <div *ngIf="message">
+        {{message}}
+    </div>
+    <form [formGroup]="form">
+        <h3>Add plan</h3>
+        <mat-form-field>
+            <mat-label>Plan</mat-label>
+            <mat-select formControlName="agreementName">
+                <mat-option value="500 MB / 30 days / 5$">500 MB / 30 days / 5$</mat-option>
+                <mat-option value="1 GB / 30 days / 9$">1 GB / 30 days / 9$</mat-option>
+                <mat-option value="3 GB / 30 days / 15$">3 GB / 30 days / 15$</mat-option>
+                <mat-option value="Unlimited / 30 days / 30$">Unlimited / 30 days / 30$</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-radio-group formControlName="paymentName">
+            <mat-radio-button [checked]="true" value="Cash" style="margin-right: 10px;">Cash</mat-radio-button>
+            <mat-radio-button value="Creditcard">Creditcard</mat-radio-button>
+        </mat-radio-group>
+        <button mat-raised-button [disabled]="form.invalid" (click)="buy()">Buy</button>
+    </form>
+</mat-card>

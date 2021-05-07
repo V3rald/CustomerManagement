@@ -12,6 +12,7 @@ import { CATEGORIES } from 'src/app/shared/database/category.database';
 export class NavComponent implements OnInit {
   categories = CATEGORIES;
   name: string;
+  mobile: boolean;
 
   constructor(private sharedService: SharedService, private router: Router, private authService: AuthService) { }
 
@@ -22,6 +23,10 @@ export class NavComponent implements OnInit {
 
   ngOnInit(): void {
     this.name = this.sharedService.NAME;
+
+    if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+      this.mobile = true;
+    }else this.mobile = false;
   }
 
 }

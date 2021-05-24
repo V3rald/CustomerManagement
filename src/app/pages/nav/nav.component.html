@@ -1,4 +1,4 @@
-<div *ngIf="!mobile">
+<div class="desktop-nav">
     <mat-toolbar color="primary" class="mat-elevation-z6">
         <mat-toolbar-row>
             <button mat-raised-button *ngFor="let item of categories" [routerLink]="[ item.url ]">
@@ -14,21 +14,20 @@
             <mat-menu #menu="matMenu">
                 <button mat-menu-item (click)="logout()">
                     <mat-icon>arrow_back</mat-icon>
-                    <span>Kijelentkezés</span>
+                    <span>Logout</span>
                 </button>
             </mat-menu>
     
         </mat-toolbar-row>
     </mat-toolbar>
-    <span style="color:white">Desktop</span>
 </div>
-<div *ngIf="mobile">
+<div class="mobile-nav">
     <mat-toolbar color="primary" class="mat-elevation-z6">
         <mat-toolbar-row>
-            <button mat-button [matMenuTriggerFor]="menu">
+            <button mat-button [matMenuTriggerFor]="menu2">
                 <mat-icon>reorder</mat-icon>
             </button>
-            <mat-menu #menu="matMenu">
+            <mat-menu #menu2="matMenu">
                 <button mat-raised-button *ngFor="let item of categories" [routerLink]="[ item.url ]" style="margin-bottom: 5px; display: flex;">
                     {{item.title}}&nbsp;
                     <mat-icon>{{item.icon}}</mat-icon>
@@ -37,18 +36,16 @@
 
             <span style="flex: 1 1"></span>
     
-            <button mat-button [matMenuTriggerFor]="profile">
+            <button mat-button [matMenuTriggerFor]="profile2">
                 {{name}}&nbsp;
                 <mat-icon>arrow_drop_down</mat-icon>
             </button>
-            <mat-menu #profile="matMenu">
+            <mat-menu #profile2="matMenu">
                 <button mat-menu-item (click)="logout()">
                     <mat-icon>arrow_back</mat-icon>
-                    <span>Kijelentkezés</span>
+                    <span>Logout</span>
                 </button>
             </mat-menu>
-    
         </mat-toolbar-row>
     </mat-toolbar>
-    <span style="color:white">Mobile</span>
 </div>

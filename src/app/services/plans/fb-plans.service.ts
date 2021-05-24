@@ -13,7 +13,7 @@ export class FbPlansService {
 
   async addAgreement(email: string, data): Promise<void> {
     let date = new Date();
-    date.setDate(date.getDate() + 30);
+    date.setMonth(date.getMonth() + 1);
     this.afs.collection("customer").doc(email).update({status: "accepted", validFor: date})
 
     return this.afs.collection("customer").doc(email).update({agreementref: data});

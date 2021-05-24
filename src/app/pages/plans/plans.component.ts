@@ -51,7 +51,7 @@ export class PlansComponent implements OnInit {
     let dateToday = new Date();
     let plansClass = this;
     this.service.get(email).then(function(result: any) {
-      if(!result) return;
+      if(!result || result.validFor == null) return;
       let valid: Date = result.validFor.toDate();
       if(dateToday >= valid){
         plansClass.status = "refused";
@@ -71,8 +71,12 @@ export class PlansComponent implements OnInit {
       plansClass.service.addPayment(email, plansClass.payments);
   
       let date = new Date();
-      date.setDate(date.getDate() + 30);
-      let valid: string = date.getFullYear() + "-" + date.getMonth() + "-" + date.getDate();
+      date.setMonth(date.getMonth() + 2);
+      let month = date.getMonth().toString();
+      let day = date.getDate().toString();
+      if(month.length == 1)  month = "0" + month;
+      if(day.length == 1)  day = "0" + day;
+      let valid: string = date.getFullYear() + "-" + month + "-" + day;
   
       let agreement: AgreementRef = {id: plansClass.afs.createId(), name: plansClass.form.value.agreementName, validFor: valid};
       plansClass.agreements.push(agreement);

@@ -32,6 +32,8 @@ export class CharacteristicComponent implements OnInit {
         if(!alreadySet){
           this.characteristics.push(result);
           this.service.add(this.email, this.characteristics);
+        }else{
+          alert("You already have this characteristic set!");
         }
       }
     });

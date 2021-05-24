@@ -9,7 +9,6 @@ import { AngularFireAuthModule } from '@angular/fire/auth'
 import { environment } from 'src/environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { SharedService } from './services/shared.service';
-import { PaymentsComponent } from './pages/payments/payments.component';
 
 @NgModule({
   declarations: [
